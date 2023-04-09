@@ -1,0 +1,23 @@
+convert pdf to CSV 
+we using 
+camelot-py 0.10.1
+ghostscript 0.7
+pypdf2    2.12.1  
+(note: by default in Camelot libraries pypdf2's version 3.0.0 . that's why reason pdf not convert csv )
+
+
+
+
+#first_tables
+# tables = camelot.read_pdf('table.pdf', pages='1,2,3,5-7,8')
+# tables = camelot.read_pdf('table.pdf', password='*******')
+#tables.to_csv('foo2.csv')
+import camelot
+tables = camelot.read_pdf(r'C:/thinks_layoff.pdf',pages='all')
+count=0
+for i in range(len(tables)):
+    tables.export(f'thinks_link{count}.csv', f='csv', compress=True) # json, excel, html, markdown, sqlite
+    tables[count]
+    tables[count].to_csv(f'thinks_link{count}.csv') # to_json, to_excel, to_html, to_markdown, to_sqlite
+    tables[count].df
+    count+=1
